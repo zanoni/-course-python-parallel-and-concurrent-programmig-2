@@ -47,7 +47,7 @@ def par_download_images(image_numbers):
 
 if __name__ == '__main__':
     NUM_EVAL_RUNS = 5
-    IMAGE_NUMBERS = list(range(1, 50))
+    IMAGE_NUMBERS = list(range(1, 10))
 
     print('Evaluating Sequential Implementation...')
     sequential_result = seq_download_images(IMAGE_NUMBERS)
@@ -56,6 +56,7 @@ if __name__ == '__main__':
         start = time.perf_counter()
         seq_download_images(IMAGE_NUMBERS)
         sequential_time += time.perf_counter() - start
+        print(f'Run {i + 1} completed')
     sequential_time /= NUM_EVAL_RUNS
 
     print('Evaluating Parallel Implementation...')
@@ -65,6 +66,7 @@ if __name__ == '__main__':
         start = time.perf_counter()
         par_download_images(IMAGE_NUMBERS)
         parallel_time += time.perf_counter() - start
+        print(f'Run {i + 1} completed')
     parallel_time /= NUM_EVAL_RUNS
 
     if sequential_result != parallel_result:
